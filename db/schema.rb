@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2015_02_10_105030) do
+ActiveRecord::Schema.define(version: 2019_05_09_161810) do
 
   create_table "episodes", force: :cascade do |t|
     t.integer "tv_show_id", null: false
     t.string "title"
-    t.integer "episode"
+    t.integer "episode_no"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "watched"
@@ -43,8 +43,16 @@ ActiveRecord::Schema.define(version: 2015_02_10_105030) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider", default: "email", null: false
+    t.string "uid", default: "", null: false
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.text "tokens"
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
 end

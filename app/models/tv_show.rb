@@ -1,4 +1,4 @@
-class TvShow < ActiveRecord::Base
+class TvShow < ApplicationRecord
   belongs_to :user
   has_many :episodes
 

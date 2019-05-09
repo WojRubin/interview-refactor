@@ -23,7 +23,7 @@ gem 'jbuilder'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootsnap'
-
+gem 'puma', '~> 3.7'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -34,6 +34,9 @@ gem 'bootsnap'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'devise_token_auth'
+gem 'omniauth'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

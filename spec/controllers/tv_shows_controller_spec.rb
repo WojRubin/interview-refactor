@@ -5,6 +5,7 @@ RSpec.describe TvShowsController, :type => :controller do
   before do
     user = User.create!(email: 'foo@example.com', password: '12345678')
     sign_in user
+    request.headers.merge! user.create_new_auth_token
   end
 
   describe "GET #index" do
